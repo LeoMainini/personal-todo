@@ -1,0 +1,124 @@
+
+h1{
+    font-size: 4rem;
+}
+.home-btn{
+    font-size: 1.5rem;
+    min-width: 80%;
+    max-width: 100%;
+    padding: 2% 5%;
+}
+
+/* .folder-btn{
+    font-size: 2rem;
+} */
+
+
+.content{
+    padding: 2% 10% 2% 10%;
+}
+
+a.task-btn, a.folder-btn{
+    font-size: 2rem;
+}
+
+
+
+p{
+    font-size: 1.5rem;
+}
+.form-field{
+    width: 60%;
+    font-size: 3rem;
+    height: 6vh;
+}
+
+@media (max-width: 1400px) {
+    h1{
+        font-size: 6rem;
+    }
+    h3{
+        font-size: 2.5rem;
+    }
+    
+    a.task-btn, a.folder-btn{
+        font-size: 1.75rem;
+        min-width: 40%;
+        max-width: 75%; 
+        margin-bottom: 5%;
+        
+    }
+    .home-btn{
+        font-size: 2rem;
+        min-width: 80%;
+        max-width: 100%;
+        margin-top: 2%;
+    }
+    /* .folder-btn{
+        font-size: 2rem;
+    } */
+    .content{
+        padding: 2% 5% 2% 5%;
+    }
+    .form-field{
+        width: 70%;
+        font-size: 3rem;
+        height: 6vh;
+    }
+    
+    p{
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    h1{
+        font-size: 6.5rem;
+    }
+    a.task-btn, a.folder-btn{
+        font-size: 2rem;
+        max-width: 100%;
+        margin-top: 5%;
+    }
+    .home-btn{
+        font-size: 2rem;
+        min-width: 70%;
+        max-width: 80%;
+        margin-top: 2%;
+
+    }
+    /* .folder-btn{
+        font-size: 2rem;
+    } */
+    .content{
+        padding: 5% 3% 5% 3%;
+    }
+    .form-field{
+        width: 80%;
+        font-size: 3rem;
+        height: 8vh;
+    }
+    p{
+        font-size: 2.25rem;
+    }
+}
+
+@media (max-width: 321px) {
+    a.folder-btn span{
+        display: None;
+    }
+}
+
+@media (max-width: 281px) {
+    a.task-btn, a.folder-btn{
+        font-size: 1.5rem;
+        max-width: 100%;
+        margin-top: 5%;
+    }
+    /* a.folder-btn{
+        font-size: 1.5;
+    } */
+    h3{
+        font-size: 2rem;
+    }
+}

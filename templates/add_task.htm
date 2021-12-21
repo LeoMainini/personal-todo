@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% include 'base.htm' %}
+{%block content%}
+{%import 'bootstrap/wtf.html' as wtf%}
+<div class="container-fluid text-center content">
+    <h1>Add Task to {{folder.title}}</h1>
+    <form method="post" action="{{url_for('add_task', folder_id=folder.id)}}" novalidate>
+        {{ form.csrf_token }}
+        <h3>{{ form.title.label }}</h3><br>
+        {{ form.title(class="form-field", autofocus="true") }}
+        <br>
+
+        {% if form.title.errors %}
+        {% for error in form.title.errors %}
+        <p style="color: red; font-size: 1.75rem;">{{error}}</p>
+        {% endfor %}
+        {% endif %}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <p class="flashes" style="color: red; font-size: 1.75rem;">{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <div class="row justify-content-center">
+
+            <div class="col-xxl-1 col-xl-2 col-md-2 col-xs-4 col-8 px-2
+                my-2">
+                {{form.submit(class="btn btn-lg btn-outline-dark btn-light
+                home-btn mt-3")}}
+
+            </div>
+
+            <div class="col-xxl-1 col-xl-2 col-md-2 col-xs-4 col-8 px-2
+                my-2">
+                <a href="{{url_for('home')}}" class="btn btn-lg btn-light
+                    btn-outline-danger home-btn mt-3">Cancel</a>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+{%endblock%}

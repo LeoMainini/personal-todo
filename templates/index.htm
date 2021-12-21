@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends "base.htm" %}
+{% block content %}
+    <div class="container-fluid text-center content">
+        <h1>Your task organizer.</h1>
+        <div class="row justify-content-center">
+            <div class="col-xxl-1 col-xl-2 col-md-2 col-xs-4 col-8 px-2
+                my-2">
+                <a href="{{url_for('add_folder')}}" class="btn btn-lg btn-light btn-outline-dark home-btn home-btn">Add
+                    Folder</a>
+            </div>
+            <!-- <div class="col-xxl-1 col-xl-2 col-md-2 col-xs-4 col-8 px-2
+                my-2">
+                <a class="btn btn-lg btn-outline-dark btn-light home-btn" href="#">Add
+                    Task</a>
+            </div> -->
+        </div>
+    </div>
+    {% for folder in folders %}
+    <div class="accordion content">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-heading{{folder.id}}">
+                <button class="accordion-button collapsed py-4" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapse{{folder.id}}"
+                    aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapse{{folder.id}}">
+                    
+                    <h3>{{folder.title}}</h3>
+                    <!-- <a class="btn btn-lg btn-outline-dark btn-light mx-5 folder-btn" >Add <span>Task</span></a> -->
+                </button>
+                <div class="row justify-content-end align-content-end my-2 mx-1">
+                        <a class="btn btn-light btn-outline-warning col-xxl-1 col-xl-2 col-md-3 col-4 folder-btn mx-2" href="{{url_for('add_task', folder_id=folder.id)}}">Add <span>Task</span></a>
+                        <a class="btn btn-light btn-outline-danger col-xxl-1 col-xl-2 col-md-3 col-4 folder-btn mx-2" href="{{url_for('delete_folder', id=folder.id)}}">Delete</a>
+                    
+                </div>
+            </h2>
+            {%for task in folder.tasks%}
+            <div id="panelsStayOpen-collapse{{folder.id}}" class="accordion-collapse
+                collapse" aria-labelledby="panelsStayOpen-heading{{folder.id}}">
+                <div class="accordion-body my-2">
+                    <div class="row justify-content-end align-content-around">
+                        <p class="col-xxl-10 col-xl-9 col-9 text-start ">{{task.content}}</p>
+                        <div class="col-xxl-2 col-xl-3 col-3 row justify-content-end align-content-start"  >
+                            <!-- <a class="btn btn-light btn-outline-warning col-xxl-4 col-xl-3 col-md-3 col-sm-12 col-12 task-btn mx-2">Edit</a> -->
+                            <a class="btn btn-light btn-outline-danger col-xxl-4 col-xl-3 col-md-3 col-sm-12 col-12 task-btn mx-2" href="{{url_for('delete_task', id=task.id)}}">Done</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+    {%endfor%}
+    {% endblock %}
