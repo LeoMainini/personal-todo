@@ -16,6 +16,11 @@
             </div> -->
         </div>
     </div>
+    {% if folders|length < 1 %}
+    <div class="container-fluid content text-center">
+        <h3> All done, congratulations! <span style="color: greenyellow;">&#10003;</span></h3>
+    </div>
+    {% else %}
     {% for folder in folders %}
     <div class="accordion content">
         <div class="accordion-item">
@@ -52,4 +57,5 @@
         </div>
     </div>
     {%endfor%}
+    {% endif %}
     {% endblock %}
