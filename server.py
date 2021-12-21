@@ -2,10 +2,8 @@ from flask import Flask, redirect, render_template, sessions, url_for, request, 
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from sqlalchemy.orm import relationship
-from sqlalchemy.orm.relationships import foreign
-from wtforms import StringField, SubmitField, BooleanField
-from wtforms.fields.simple import URLField
-from wtforms.validators import DataRequired, URL, Length
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired, Length
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 import os
@@ -98,5 +96,6 @@ def delete_folder(id):
     db.session.delete(folder)
     db.session.commit()
     return redirect(url_for('home'))
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
