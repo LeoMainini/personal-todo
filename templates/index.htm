@@ -16,6 +16,9 @@
             </div> -->
         </div>
     </div>
+    {% if len(folders) == 0 %}
+        <h3>All done, congratulations! <span style="color: greenyellow;">&#10003;</span></h3>
+    {% elif %}
     {% for folder in folders %}
     <div class="accordion content">
         <div class="accordion-item">
@@ -52,4 +55,5 @@
         </div>
     </div>
     {%endfor%}
+    {% endif %}
     {% endblock %}
