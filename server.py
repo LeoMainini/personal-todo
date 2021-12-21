@@ -8,11 +8,12 @@ from wtforms.fields.simple import URLField
 from wtforms.validators import DataRequired, URL, Length
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
+import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', "sqlite:///todo.db")
 db = SQLAlchemy(app)
 Bootstrap(app)
 
@@ -89,7 +90,7 @@ def delete_task(id):
 @app.route('/del/folder/<int:id>')
 def delete_folder(id):
     tasks = db.session.query(Task).filter_by(folder_id = id).all()
-    if len(tasks) >0:
+    if len(tasks) > 0:
         for task in tasks:
             db.session.delete(task)
         db.session.commit()
