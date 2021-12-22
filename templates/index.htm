@@ -19,12 +19,12 @@
                 </div>
             </div> -->
         </div>
-        {% if folders|length < 1 %}
+        {% if current_user.folders|length < 1 %}
         <div class="container-fluid content text-center">
             <h3> All done, congratulations! <span style="color: greenyellow;">&#10003;</span></h3>
         </div>
         {% else %}
-        {% for folder in folders %}
+        {% for folder in current_user.folders %}
         <div class="accordion content">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="panelsStayOpen-heading{{folder.id}}">

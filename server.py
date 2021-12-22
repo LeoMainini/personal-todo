@@ -23,7 +23,7 @@ Bootstrap(app=app)
 login_manager = LoginManager(app)
 
 
-class User(UserMixin, db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(20), nullable=False)
@@ -106,8 +106,7 @@ def load_user(user_id):
 
 @app.route('/')
 def home():
-    folders = db.session.query(Folder).all()
-    return render_template('index.htm', folders=folders)
+    return render_template('index.htm')
 
 @app.route('/add/folder', methods=["GET", "POST"])
 @login_required
@@ -115,7 +114,7 @@ def add_folder():
     form = FolderForm()
     if form.validate_on_submit():
 
-        new_folder = Folder(title=form.title.data, user_id=current_user.id)
+        new_folder = Folder(title=form.title.data, user = current_user)
         try:
             db.session.add(new_folder)
             db.session.commit()
