@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% include 'base.htm' %}
+{%block content%}
+<div class="container-fluid text-center content">
+    <h1>Register</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <p class="form-error">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {% block body %}{% endblock %}
+    <form method="post" action="{{url_for('register_user')}}" novalidate>
+        <div class="row justify-content-center my-5">
+
+            {{ form.csrf_token }}
+            <div class="col-md-5 col-sm-8 col-8 my-3">
+                <h3>{{ form.first_name.label }}</h3><br>
+                {{ form.first_name(class="login-field", autofocus="true") }}
+                {% if form.first_name.errors|length > 0 %}
+                <p class="form-error">{{form.first_name.errors[0]}}</p>
+                {%endif%}
+            </div>
+            <div class="col-md-5 col-sm-8 col-8 my-3">
+                <h3>{{ form.last_name.label }}</h3><br>
+                {{ form.last_name(class="login-field") }}
+                {% if form.last_name.errors|length > 0 %}
+                <p class="form-error">{{form.last_name.errors[0]}}</p>
+                {%endif%}
+            </div>
+
+            <div class="col-md-10 col-sm-10 col-12 my-3">
+                <h3>{{ form.email.label }}</h3><br>
+                {{ form.email(class="login-field") }}
+                {% if form.email.errors|length > 0 %}
+                <p class="form-error">{{form.email.errors[0]}}</p>
+                {%endif%}
+            </div>
+            <div class="col-md-10 col-sm-10 col-12 my-3">
+
+                <h3>{{ form.email_val.label }}</h3><br>
+                {{ form.email_val(class="login-field") }}
+                {% if form.email_val.errors|length > 0%}
+                <p class="form-error">{{form.email_val.errors[0]}}</p>
+                {%endif%}
+            </div>
+            <div class="col-md-5 col-sm-8 col-8 my-3">
+
+                <h3>{{ form.password.label }}</h3><br>
+                {{ form.password(class="login-field") }}
+                {% if form.password.errors|length > 0%}
+                <p class="form-error">{{form.password.errors[0]}}</p>
+                {%endif%}
+            </div>
+            <div class="col-md-5 col-sm-8 col-8 my-3">
+
+                <h3>{{ form.password_val.label }}</h3><br>
+                {{ form.password_val(class="login-field") }}
+                {% if form.password_val.errors|length > 0%}
+                <p class="form-error">{{form.password_val.errors[0]}}</p>
+                {%endif%}
+            </div>
+        </div>
+        <div class="row justify-content-center">
+
+            <div class="col-xxl-1 col-xl-2 col-md-2 col-xs-4 col-8 px-2
+                my-2">
+                {{form.submit(class="btn btn-lg btn-outline-dark btn-light
+                home-btn mt-3")}}
+
+            </div>
+
+            <div class="col-xxl-1 col-xl-2 col-md-2 col-xs-4 col-8 px-2
+                my-2">
+                <a href="{{url_for('home')}}" class="btn btn-lg btn-light
+                    btn-outline-danger home-btn mt-3">Cancel</a>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+{%endblock%}
