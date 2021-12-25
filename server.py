@@ -1,6 +1,5 @@
-from flask import Flask, redirect, render_template, sessions, url_for, request, flash, abort
+from flask import Flask, redirect, render_template, url_for, request, flash, abort
 from flask_bootstrap import Bootstrap
-from flask_login.utils import login_url
 from flask_wtf import FlaskForm
 from sqlalchemy.orm import relationship
 from wtforms import StringField, SubmitField, EmailField

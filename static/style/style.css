@@ -33,13 +33,13 @@ p{
 }
 .form-field{
     width: 60%;
-    font-size: 3rem;
-    height: 6vh;
+    font-size: 1.5rem;
+    height: 4vh;
 }
 
 .login-field{
     width: 100%;
-    font-size: 2rem;
+    font-size: 1.5rem;
     height: 4vh;
 }
 .form-error{
@@ -111,10 +111,10 @@ p{
     
     .form-field{
         width: 80%;
-        height: 8vh;
+        height: 5vh;
     }
     .login-field{
-        font-size: 2.25 rem;
+        font-size: 1.5 rem;
         height: 5vh;
     }
     p{
